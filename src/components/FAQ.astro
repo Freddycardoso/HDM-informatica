@@ -1,0 +1,67 @@
+---
+/**
+ * @file src/components/FAQ.astro
+ * Seção de Perguntas Frequentes focada em quebra de objeções (CRO).
+ */
+---
+<section class="py-24 bg-[#0B0B0E] relative overflow-hidden" aria-labelledby="faq-title">
+  <div class="max-w-3xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 id="faq-title" class="text-sm uppercase tracking-widest text-yellow-500 mb-4 font-bold">Dúvidas Comuns</h2>
+      <h3 class="text-3xl md:text-4xl font-light text-white font-display">Respostas Transparentes</h3>
+    </div>
+    
+    <div class="space-y-4">
+      <!-- Q1 -->
+      <details class="group bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors">
+        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 rounded-xl">
+          <span>Perco os dados na troca de tela?</span>
+          <span class="transition group-open:rotate-180">
+            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </span>
+        </summary>
+        <p class="text-gray-400 px-6 pb-6 mt-2 leading-relaxed text-sm">Não. A substituição da tela (vidro ou display) não interfere na memória do aparelho. Seus dados, fotos e aplicativos permanecem exatamente como estavam.</p>
+      </details>
+      <!-- Q2 -->
+      <details class="group bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors">
+        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 rounded-xl">
+          <span>Qual o tempo médio de reparo?</span>
+          <span class="transition group-open:rotate-180">
+            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </span>
+        </summary>
+        <p class="text-gray-400 px-6 pb-6 mt-2 leading-relaxed text-sm">A maioria dos reparos comuns, como troca de tela e bateria, são feitos no mesmo dia, frequentemente em 1 a 2 horas. Reparos complexos em placa levam de 1 a 3 dias úteis.</p>
+      </details>
+      <!-- Q3 -->
+      <details class="group bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors">
+        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 rounded-xl">
+          <span>As peças têm garantia?</span>
+          <span class="transition group-open:rotate-180">
+            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </span>
+        </summary>
+        <p class="text-gray-400 px-6 pb-6 mt-2 leading-relaxed text-sm">Sim. Trabalhamos exclusivamente com peças premium ou originais, todas com garantia de fábrica de 90 dias contra defeitos de fabricação.</p>
+      </details>
+      <!-- Q4 -->
+      <details class="group bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors">
+        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 rounded-xl">
+          <span>Como funciona o orçamento?</span>
+          <span class="transition group-open:rotate-180">
+            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </span>
+        </summary>
+        <p class="text-gray-400 px-6 pb-6 mt-2 leading-relaxed text-sm">O orçamento preliminar pode ser feito via WhatsApp em minutos. A avaliação definitiva é feita na loja em nossa bancada de forma transparente e gratuita.</p>
+      </details>
+      <!-- Q5 -->
+      <details class="group bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors">
+        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500 rounded-xl">
+          <span>Trabalham com envio por motoboy?</span>
+          <span class="transition group-open:rotate-180">
+            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </span>
+        </summary>
+        <p class="text-gray-400 px-6 pb-6 mt-2 leading-relaxed text-sm">Sim! Para clientes de Passos - MG, temos parceiros de coleta e entrega, garantindo a comodidade e segurança do seu dispositivo sem sair de casa.</p>
+      </details>
+    </div>
+  </div>
+</section>

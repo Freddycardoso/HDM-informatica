@@ -1,0 +1,98 @@
+---
+// src/components/HeroCinematic.astro
+// Hero Section Cinematográfica com ScrollTrigger Pinning
+---
+
+<section id="hero-cinematic" class="h-screen bg-[#0B0B0E] relative flex flex-col items-center justify-center overflow-hidden">
+  
+  {/* Camada 1: Fundo e Overlay Escuro */}
+  <div id="hero-bg" class="absolute inset-0 w-full h-full z-0">
+    <img 
+      id="hero-bg-img"
+      src="/Placa mae.jpg" 
+      alt="Placa Mãe de Alta Tecnologia" 
+      class="absolute inset-0 w-full h-full object-cover scale-[1.45] origin-center"
+    />
+    <div class="absolute inset-0 bg-[#0B0B0E]/60 z-10"></div>
+  </div>
+
+  {/* Camada 2: Logo Inicial (z-20) */}
+  <img 
+    id="hero-logo" 
+    src="/logo HDM.webp" 
+    alt="Logo HDM Infocell" 
+    class="z-20 w-64 md:w-80 relative object-contain"
+  />
+
+  {/* Camada 3: Conteúdo Oculto (Captura de Leads) */}
+  <div id="hero-content" class="z-20 absolute flex flex-col items-center text-center opacity-0 translate-y-16 px-4 w-full">
+    
+    <h1 class="text-white text-4xl md:text-5xl font-light max-w-3xl leading-tight mb-8 drop-shadow-lg">
+      Especialistas em conserto de <span class="text-[#FACC15] font-bold">celulares</span>, <span class="text-[#FACC15] font-bold">notebooks</span> e venda de acessórios em <span class="whitespace-nowrap">Passos - MG</span>
+    </h1>
+
+    <a 
+      href="https://wa.me/5535999820832?text=Ol%C3%A1%2C%20preciso%20de%20um%20or%C3%A7amento%20para%20assist%C3%AAncia%20t%C3%A9cnica" 
+      target="_blank"
+      rel="noopener noreferrer"
+      class="px-8 py-3.5 rounded-full bg-amber-500/10 border border-[#FACC15]/50 text-[#FACC15] font-semibold text-lg hover:bg-amber-500/20 hover:border-[#FACC15] transition-all backdrop-blur-sm"
+    >
+      Solicitar Orçamento Agora
+    </a>
+
+  </div>
+
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cinematicSection = document.getElementById("hero-cinematic");
+  const heroBg = document.getElementById("hero-bg");
+  const heroLogo = document.getElementById("hero-logo");
+  const heroContent = document.getElementById("hero-content");
+
+  if (cinematicSection && heroBg && heroLogo && heroContent) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: cinematicSection,
+        pin: true,
+        // scrub: true = resposta 1:1 pura com o scroll.
+        // Elimina qualquer dead zone: o primeiro pixel de scroll já move tudo.
+        scrub: true,
+        start: "top top",
+        end: "+=100%", // Reduzido para tirar o buraco preto no scroll
+        anticipatePin: 1,
+      }
+    });
+
+    // ── FASE 1 (primeiros 60% do scroll): Fundo some + Logo sobe ──────────
+    // Tudo começa no instante zero — zero folga garantida.
+    tl.to(heroBg, {
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.inOut"
+    }, 0);
+
+    tl.to(heroLogo, {
+      scale: 0.65,
+      y: "-25vh",
+      duration: 0.6,
+      ease: "power2.inOut"
+    }, 0);
+
+    // ── FASE 2 (após 65% do scroll): Texto surge DEPOIS da logo já ter pousado ──
+    // O offset ">-0.05" significa: começa 5% antes de a fase 1 terminar,
+    // criando uma transição encadeada sem gap de espera.
+    tl.to(heroContent, {
+      opacity: 1,
+      y: 0,
+      duration: 0.35,
+      ease: "power2.out"
+    }, 0.65);
+  }
+
+</script>

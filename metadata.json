@@ -1,0 +1,8 @@
+{
+  "name": "HDM Infocell - Assistência Técnica & Acessórios em Passos MG",
+  "description": "Assistência técnica especializada em conserto de celulares, notebooks e venda de acessórios em Passos - MG. Orçamento rápido via WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

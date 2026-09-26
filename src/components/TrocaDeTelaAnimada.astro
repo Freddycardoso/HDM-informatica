@@ -1,0 +1,117 @@
+---
+// src/components/TrocaDeTelaAnimada.astro
+// Componente de Troca de Tela com Levitação Infinita (GSAP yoyo)
+---
+
+<section class="relative bg-[#0B0B0E] overflow-hidden flex items-center pb-16 pt-0 md:pb-24 md:pt-4">
+  
+  {/* Ponte visual: linha brilhante que desce da Hero ligando as duas sessões */}
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 md:h-48 bg-gradient-to-b from-[#FACC15]/30 to-transparent pointer-events-none hidden md:block"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center">
+      
+      {/* Coluna da Esquerda: Texto Clean & Minimalista */}
+      <div class="flex flex-col space-y-6 text-left z-30">
+        <h2 class="text-white text-4xl md:text-5xl font-light tracking-tight leading-tight">
+          Sua tela nova. <br/>
+          <span class="font-bold text-[#FACC15]">Perfeição de fábrica.</span>
+        </h2>
+        
+        <p class="text-gray-400 text-lg max-w-md leading-relaxed">
+          Substituímos o display do seu aparelho com peças originais selecionadas. Encaixe perfeito, calibração de cores exata e a mesma sensibilidade de toque que você ama. Tudo isso em tempo recorde.
+        </p>
+        
+        {/* CTA Fluido - Sem blocos duros */}
+        <div class="pt-4">
+          <a 
+            href="https://wa.me/5535999820832?text=Ol%C3%A1%2C%20preciso%20de%20um%20or%C3%A7amento%20para%20troca%20de%20tela" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center min-h-[48px] px-6 rounded-full border border-[#FACC15]/30 gap-3 text-[#FACC15] font-medium text-lg hover:bg-[#FACC15]/10 hover:border-[#FACC15] transition-all group"
+          >
+            <span>Orçar Troca de Tela</span>
+            <svg class="w-5 h-5 ml-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Coluna da Direita: Celular com Levitação Infinita */}
+      <div class="relative w-full max-w-sm mx-auto" id="anim-container">
+        
+        {/* 
+          Sombra projetada dinâmica — cria profundidade e ancora a levitação visualmente.
+          O GSAP também anima essa sombra inversamente para reforçar o efeito de altura.
+        */}
+        <div
+          id="levitation-shadow"
+          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-black/40 blur-xl rounded-full pointer-events-none z-0"
+        ></div>
+
+        {/* Carcaça do Celular — elemento base, estático */}
+        <img 
+          src="/Gemini_Generated_Image_jmt025jmt025jmt0-removebg-preview.webp" 
+          alt="Carcaça do Celular" 
+          class="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
+        />
+
+        {/* 
+          Tela com Interface — levita infinitamente acima da carcaça.
+          -translate-y-12 posiciona ela acima no estado inicial (antes do JS).
+          GSAP assume o controle e faz o yoyo suave.
+        */}
+        <img 
+          id="screen-layer"
+          src="/Gemini_Generated_Image_eqgekdeqgekdeqge-removebg-preview (1).webp" 
+          alt="Display do Celular em levitação" 
+          class="absolute top-0 left-0 z-20 w-full h-auto object-contain pointer-events-none -translate-y-12"
+        />
+
+        {/* Brilho âmbar de fundo para profundidade */}
+        <div class="absolute inset-0 z-0 bg-amber-500/8 blur-[80px] rounded-full pointer-events-none scale-90" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Importa apenas o core do GSAP — sem ScrollTrigger
+  import { gsap } from "gsap";
+
+  const screenLayer = document.getElementById("screen-layer");
+  const shadow      = document.getElementById("levitation-shadow");
+
+  if (screenLayer) {
+    // Posição inicial: tela paira 48px acima da carcaça
+    gsap.set(screenLayer, { y: -48 });
+
+    // ── Loop de levitação ──────────────────────────────────────────────────
+    // A tela sobe mais 20px e volta, infinitamente, com easing orgânico.
+    // yoyo:true inverte a animação, repeat:-1 repete para sempre.
+    gsap.to(screenLayer, {
+      y: -68,              // desce até 20px mais alto (mais longe da carcaça)
+      duration: 2.8,       // ciclo suave de ~2.8s por sentido
+      ease: "sine.inOut",  // curva orgânica: acelera e desacelera naturalmente
+      yoyo: true,          // inverte o movimento ao chegar no extremo
+      repeat: -1,          // loop infinito
+    });
+
+    // ── Sombra projetada — animação espelhada ──────────────────────────────
+    // Quando a tela sobe, a sombra encolhe e fica mais transparente.
+    // Isso reforça a percepção de "altitude real" sem precisar de 3D.
+    if (shadow) {
+      gsap.to(shadow, {
+        scaleX: 0.7,           // sombra encolhe lateralmente
+        opacity: 0.3,          // sombra fica mais fraca
+        duration: 2.8,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    }
+  }
+</script>
