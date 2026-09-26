@@ -56,43 +56,49 @@
   const heroContent = document.getElementById("hero-content");
 
   if (cinematicSection && heroBg && heroLogo && heroContent) {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: cinematicSection,
-        pin: true,
-        // scrub: true = resposta 1:1 pura com o scroll.
-        // Elimina qualquer dead zone: o primeiro pixel de scroll já move tudo.
-        scrub: true,
-        start: "top top",
-        end: "+=100%", // Reduzido para tirar o buraco preto no scroll
-        anticipatePin: 1,
-      }
+    let mm = gsap.matchMedia();
+
+    mm.add({
+      // Contextos para Mobile e Desktop
+      isMobile: "(max-width: 767px)",
+      isDesktop: "(min-width: 768px)"
+    }, (context) => {
+      let { isMobile } = context.conditions;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: cinematicSection,
+          pin: true,
+          // scrub com número adiciona inércia (easing) de 1 segundo
+          // Deixa a animação extremamente suave e tira qualquer sensação de "travada"
+          scrub: 1,
+          start: "top top",
+          end: "+=100%", 
+          anticipatePin: 1,
+        }
+      });
+
+      tl.to(heroBg, {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.inOut"
+      }, 0);
+
+      tl.to(heroLogo, {
+        scale: 0.65,
+        // No mobile a logo sobe mais alto (-38vh) para não cobrir o texto que quebra linha
+        y: isMobile ? "-38vh" : "-25vh",
+        duration: 0.6,
+        ease: "power2.inOut"
+      }, 0);
+
+      tl.to(heroContent, {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "power2.out"
+      }, 0.65);
     });
-
-    // ── FASE 1 (primeiros 60% do scroll): Fundo some + Logo sobe ──────────
-    // Tudo começa no instante zero — zero folga garantida.
-    tl.to(heroBg, {
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.inOut"
-    }, 0);
-
-    tl.to(heroLogo, {
-      scale: 0.65,
-      y: "-25vh",
-      duration: 0.6,
-      ease: "power2.inOut"
-    }, 0);
-
-    // ── FASE 2 (após 65% do scroll): Texto surge DEPOIS da logo já ter pousado ──
-    // O offset ">-0.05" significa: começa 5% antes de a fase 1 terminar,
-    // criando uma transição encadeada sem gap de espera.
-    tl.to(heroContent, {
-      opacity: 1,
-      y: 0,
-      duration: 0.35,
-      ease: "power2.out"
-    }, 0.65);
   }
 
 </script>
