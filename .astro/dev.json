@@ -1,0 +1,20 @@
+{
+	"pid": 25712,
+	"port": 3000,
+	"url": "http://localhost:3000",
+	"urls": {
+		"local": [
+			"http://localhost:3000/"
+		],
+		"network": [
+			"http://26.44.159.188:3000/",
+			"http://192.168.15.8:3000/"
+		],
+		"networkInterfaceNames": [
+			"Radmin VPN",
+			"Wi-Fi"
+		]
+	},
+	"background": false,
+	"startedAt": "2026-09-25T22:48:37.625Z"
+}

@@ -5,7 +5,7 @@
 
 <section
   id="destaques"
-  class="relative bg-[#0B0B0E] overflow-hidden flex flex-col items-center justify-center py-20 md:py-28 px-4"
+  class="relative bg-[#0B0B0E] overflow-hidden flex flex-col items-center justify-center py-12 md:py-28 px-4"
 >
 
   {/* ── Título da Seção (oculto — GSAP revela) ── */}
@@ -35,13 +35,13 @@
     ></div>
 
     {/* ── Grid de 3 Produtos ── */}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-20 relative z-10 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-4 md:gap-y-20 relative z-10 w-full">
 
       {/* Card 1: Bateria */}
       <div class="flex flex-col items-center text-center">
 
         {/* Imagem Container Fixo (alinha base de todos os itens) */}
-        <div class="h-[340px] w-full flex items-end justify-center relative mb-8">
+        <div class="h-[200px] sm:h-[280px] md:h-[340px] w-full flex items-end justify-center relative mb-3 md:mb-8">
           <div class="item-glow opacity-0 absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-3 bg-amber-500/20 blur-xl rounded-full"></div>
           
           {/* Prateleira Mobile (Linha individual) */}
@@ -73,7 +73,7 @@
 
       {/* Card 2: SSD */}
       <div class="flex flex-col items-center text-center">
-        <div class="h-[340px] w-full flex items-end justify-center relative mb-8">
+        <div class="h-[200px] sm:h-[280px] md:h-[340px] w-full flex items-end justify-center relative mb-3 md:mb-8">
           <div class="item-glow opacity-0 absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-3 bg-amber-500/20 blur-xl rounded-full"></div>
           <div class="md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] w-3/4 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
           <img
@@ -101,7 +101,7 @@
 
       {/* Card 3: Película */}
       <div class="flex flex-col items-center text-center">
-        <div class="h-[340px] w-full flex items-end justify-center relative mb-8">
+        <div class="h-[200px] sm:h-[280px] md:h-[340px] w-full flex items-end justify-center relative mb-3 md:mb-8">
           <div class="item-glow opacity-0 absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-3 bg-amber-500/20 blur-xl rounded-full"></div>
           <div class="md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] w-3/4 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
           <img
