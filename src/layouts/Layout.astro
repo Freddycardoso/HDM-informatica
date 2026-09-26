@@ -144,7 +144,10 @@ const schemaData = {
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"
     /></noscript>
-    
+    <!-- Otimizações LCP (Preload Imagens do Hero) -->
+    <link rel="preload" as="image" href="/Placa mae.jpg" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="/logo HDM.webp" type="image/webp" fetchpriority="high">
+
     <!-- Metatags Primárias -->
     <title>{title}</title>
     <meta name="title" content={title} />

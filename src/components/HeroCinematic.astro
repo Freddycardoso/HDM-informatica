@@ -11,16 +11,19 @@
       id="hero-bg-img"
       src="/Placa mae.jpg" 
       alt="Placa Mãe de Alta Tecnologia" 
+      fetchpriority="high"
+      decoding="sync"
       class="absolute inset-0 w-full h-full object-cover scale-[1.45] origin-center"
     />
     <div class="absolute inset-0 bg-[#0B0B0E]/60 z-10"></div>
   </div>
 
-  {/* Camada 2: Logo Inicial (z-20) */}
   <img 
     id="hero-logo" 
     src="/logo HDM.webp" 
     alt="Logo HDM Infocell" 
+    fetchpriority="high"
+    decoding="sync"
     class="z-20 w-64 md:w-80 relative object-contain"
   />
 
@@ -81,22 +84,22 @@
       tl.to(heroBg, {
         opacity: 0,
         duration: 0.6,
-        ease: "power2.inOut"
+        ease: "none" // ease "none" remove a sensação de folga/atraso no scroll
       }, 0);
 
       tl.to(heroLogo, {
         scale: 0.65,
-        // No mobile a logo sobe mais alto (-38vh) para não cobrir o texto que quebra linha
-        y: isMobile ? "-38vh" : "-25vh",
+        // No mobile a logo sobe até -31vh (meio termo entre -25vh e -38vh)
+        y: isMobile ? "-31vh" : "-25vh",
         duration: 0.6,
-        ease: "power2.inOut"
+        ease: "none" // Resposta imediata ao scroll do mouse
       }, 0);
 
       tl.to(heroContent, {
         opacity: 1,
         y: 0,
         duration: 0.35,
-        ease: "power2.out"
+        ease: "power2.out" // Aqui mantemos o out para a entrada suave do texto
       }, 0.65);
     });
   }
