@@ -24,11 +24,11 @@
     alt="Logo HDM Infocell" 
     fetchpriority="high"
     decoding="sync"
-    class="z-20 w-64 md:w-80 relative object-contain"
+    class="z-20 w-64 md:w-[500px] relative object-contain will-change-transform"
   />
 
   {/* Camada 3: Conteúdo Oculto (Captura de Leads) */}
-  <div id="hero-content" class="z-20 absolute flex flex-col items-center text-center opacity-0 translate-y-16 px-4 w-full">
+  <div id="hero-content" class="z-20 absolute flex flex-col items-center text-center opacity-0 translate-y-16 px-4 w-full will-change-transform">
     
     <h1 class="text-white text-4xl md:text-5xl font-light max-w-3xl leading-tight mb-8 drop-shadow-lg">
       Especialistas em conserto de <span class="text-[#FACC15] font-bold">celulares</span>, <span class="text-[#FACC15] font-bold">notebooks</span> e venda de acessórios em <span class="whitespace-nowrap">Passos - MG</span>
@@ -66,7 +66,7 @@
       isMobile: "(max-width: 767px)",
       isDesktop: "(min-width: 768px)"
     }, (context) => {
-      let { isMobile } = context.conditions;
+      let { isMobile, isDesktop } = context.conditions;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -74,7 +74,7 @@
           pin: true,
           // scrub com número adiciona inércia (easing) de 1 segundo
           // Deixa a animação extremamente suave e tira qualquer sensação de "travada"
-          scrub: 1,
+          scrub: isDesktop ? 1.5 : 1,
           start: "top top",
           end: "+=100%", 
           anticipatePin: 1,
@@ -84,14 +84,16 @@
       tl.to(heroBg, {
         opacity: 0,
         duration: 0.6,
+        force3D: true,
         ease: "none" // ease "none" remove a sensação de folga/atraso no scroll
       }, 0);
 
       tl.to(heroLogo, {
-        scale: 0.65,
+        scale: isDesktop ? 0.45 : 0.65,
         // No mobile a logo sobe até -31vh (meio termo entre -25vh e -38vh)
         y: isMobile ? "-31vh" : "-25vh",
         duration: 0.6,
+        force3D: true,
         ease: "none" // Resposta imediata ao scroll do mouse
       }, 0);
 
@@ -99,6 +101,7 @@
         opacity: 1,
         y: 0,
         duration: 0.35,
+        force3D: true,
         ease: "power2.out" // Aqui mantemos o out para a entrada suave do texto
       }, 0.65);
     });
